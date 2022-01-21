@@ -1,0 +1,32 @@
+#pragma once
+
+#include <string>
+#include <numeric>
+#include <vector>
+
+using namespace std;
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////////////////
+namespace util::str {
+
+  template<typename ForwardIterator>
+  auto join(ForwardIterator ff, ForwardIterator ll, string const& sep=";")
+    -> string
+  {
+    return accumulate(ff, ll, ""s, [](const auto& l, const auto& r) {
+      return l.empty() ? r : l + ";" + r; }
+    );
+  }
+
+  void split(string_view in, char delim, vector<string>& elems);
+
+}
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////////////////
