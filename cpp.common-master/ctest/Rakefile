@@ -1,0 +1,30 @@
+# -*- ruby -*-
+
+DIR      = File.dirname(__FILE__)
+PRJ_ROOT = File.expand_path("#{DIR}/../..")
+APP      = "test.develop"
+SRCS     = %W{ ../src/plist_parser.cpp
+               ../src/file_util.cpp
+               ../src/string_util.cpp
+               ../src/byte_buffer2.cpp
+               ../src/time_stamp.cpp
+               ../src/base64.cpp
+               ../src/bplist_repr.cpp
+               ./test_plist_parser.cpp
+               ./test_byte_buffer2.cpp
+               ./test_timestamp.cpp
+               ./test_file_util.cpp
+               ./test_bplist_repr.cpp
+               ./test_raw_device.cpp
+               ./test_api_sqlite3.cpp
+               ./test_scope_guard.cpp
+               ./main.cpp 
+             }
+CXX      = "g++"
+CXXFLAGS = ":Os"
+INCS     = "../include"
+LIBS     = ":s sqlite3"
+
+load '~/code/build/app2.rake'
+
+task :default => [:osx]

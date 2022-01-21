@@ -1,0 +1,30 @@
+#pragma once
+
+#include "async_runnable.hpp"
+#include "stoppable.hpp"
+#include "progressable.hpp"
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// Notice Arg should be a struct when we need arguments more thant 2
+//
+////////////////////////////////////////////////////////////////////////////////
+template <typename R, typename Arg>
+class LongRunnable
+  : public AsyncNotifiable<R, Arg>
+  , public Stoppable
+  , public Progressable
+{};
+
+template <typename R>
+class LongRunnable<R, void> 
+  : public AsyncNotifiable<R, void>
+  , public Stoppable
+  , public Progressable
+{};
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////////////////////////////////////
